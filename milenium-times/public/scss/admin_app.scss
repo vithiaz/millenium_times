@@ -1,4 +1,6 @@
-@use '_var' as *;
+// @use '_var' as *;
+@import '_var.scss';
+
 
 // Base Layout CSS
 .admin-layout {
@@ -104,8 +106,15 @@
             font-size: 1.2rem;
             font-weight: 600;
             letter-spacing: 2px;
-    
+            text-decoration: none;
+            color: white;
+
             &::first-letter {
+                color: $PrimaryBlue;
+            }
+            
+            &:hover {
+                cursor: pointer;
                 color: $PrimaryBlue;
             }
         }
@@ -237,6 +246,10 @@
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+
+                .no-image {
+                    @include no-image-i();
                 }
             }
 

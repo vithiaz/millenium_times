@@ -6,7 +6,6 @@
 }
 .news-list-page .container .content-card {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 10px 20px;
@@ -85,7 +84,6 @@
 }
 .news-list-page .container .content-card .content-body {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -98,7 +96,6 @@
   color: #747474;
 }
 .news-list-page .container .content-card .content-body table .edit-post-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;

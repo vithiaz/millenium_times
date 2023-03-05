@@ -13,6 +13,7 @@ class Comments extends Component
     
     // Binding Variable
     public $comment;
+    public $delete_id;
 
     protected $rules = [
         'comment' => 'nullable',
@@ -49,6 +50,22 @@ class Comments extends Component
         $this->comment = '';
         $this->emit('refreshSelf');
     }
+
+    public function delete_comment() {
+        $delete_comment = PostComment::find($this->delete_id);
+
+        if (($delete_comment->user_id == Auth::user()->id) || (Auth::user()->user_type == 1)) {
+            $delete_comment->delete();
+            $msg = ['success' => 'Kategori dihapus'];
+            $this->dispatchBrowserEvent('display-message', $msg);
+        } else {
+            return abort(403);
+        }
+
+        $this->dispatchBrowserEvent('hide-delete-comment-modal');
+        $this->delete_id = null;
+    }
+
 
 
 }

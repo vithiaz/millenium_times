@@ -37,8 +37,8 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    @stack('stylesheet')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @stack('stylesheet')
 
     @livewireStyles
 </head>

@@ -57,10 +57,8 @@
 .category-page .container .content-section .content-head .categories-card-wrapper .card {
   display: block;
   padding: 5px 10px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   background-color: #1C1C1C;
@@ -99,7 +97,6 @@
   justify-content: center;
   gap: 20px;
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 0.9rem;

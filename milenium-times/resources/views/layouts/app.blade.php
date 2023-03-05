@@ -9,6 +9,8 @@
         {{ $slot }}
     </main>
 
+
+
     {{-- END --}}
 
 @endsection

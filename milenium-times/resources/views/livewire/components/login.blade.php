@@ -3,9 +3,9 @@
         <form wire:submit.prevent='login' class="modal-content">
             @csrf
 
-            <div class="close-modal-button">
-                <i class="fa-solid fa-xmark" onclick="hide_auth_modal()"></i>
-            </div>
+            <button class="close-modal-button" onclick="hide_auth_modal()" data-bs-dismiss="modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
             <div class="logo-wrapper">
                 <img src="{{ asset('image\milenium-logo-origin.png') }}" alt="milenium-sport-logo">
@@ -40,8 +40,7 @@
                 <span>Masuk dengan</span>
             </div>
             <div class="social-ic-wrapper">
-                <a href="#"><x-icon.fb/></a>
-                <a href="#"><x-icon.google/></a>
+                <a href="{{ route('google-redirect') }}"><x-icon.google/></a>
             </div>
             <div class="register-suggest">
                 <span>Belum punya akun?</span>
@@ -56,6 +55,9 @@
 
     function hide_auth_modal() {
         $('#auth_modal').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        // $('.modal-backdrop').remove();
     }
 
 </script>

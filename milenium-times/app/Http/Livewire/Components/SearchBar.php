@@ -24,7 +24,16 @@ class SearchBar extends Component
 
     public function input_search() {
         $this->validate();
-        return redirect()->route('sport-search')->with('search', $this->search);
+
+        if ($this->pageId == 1) {
+            return redirect()->route('sport-search')->with('search', $this->search);
+        }
+        else if ($this->pageId == 2) {
+            return redirect()->route('env-search')->with('search', $this->search);
+        }
+        else if ($this->pageId == 3) {
+            return redirect()->route('history-search')->with('search', $this->search);
+        }
     }
 
 }

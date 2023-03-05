@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginPage extends Component
 {
@@ -31,11 +32,15 @@ class LoginPage extends Component
         $remember_me = true;
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $remember_me)) {
-            return redirect()->route('sport-home');
+            return redirect()->route('welcome-page');
         }
         else {
             $this->password = '';
             session()->flash('error', 'Email atau password salah!');
         }
+    }
+
+    public function facebook_login() {
+        // return Socialite::driver('facebook')->redirect();
     }
 }

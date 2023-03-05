@@ -1,4 +1,6 @@
-@use '_var' as *;
+// @use '_var' as *;
+@import '_var.scss';
+
 
 .auth-main {
     padding-top: 80px;
@@ -11,8 +13,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
-    
+
     .container {
         display: flex;
         flex-direction: row;
@@ -175,8 +176,12 @@
 
                 .username {
                     font-weight: 600;
-                    max-width: 100%;
-                    overflow-x: hidden;
+                    // max-width: 100%;
+                    display:inline-block;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 200px;
                 }
         
                 #auth-dropdown-button {
@@ -249,6 +254,52 @@
         }
 
     }
+
+    &.dark {
+        background-color: rgba($color: #000000, $alpha: 0.7) !important;
+        
+        &.scroll-up {
+            background-color: $PrimaryBlack !important;
+        }
+
+        .brand {
+            color: white !important;
+        }
+
+        .menu-wrapper {
+            
+            li a {
+                color: white !important;
+            }
+        }
+
+        .auth-container::before {
+            background-color: rgb(80, 80, 80);
+        }
+
+        .login a {
+            background-color: transparent !important;
+            color: white;
+        }
+
+        .logged-in {
+
+            .username {
+                color: white;
+            }
+
+            #auth-dropdown-button {
+                color: white;
+
+                &:hover, &.active {
+                    background-color: rgba($color: #fff, $alpha: 0.2) !important;
+                }
+            }
+        }
+
+    }
+
+
 }
 
 

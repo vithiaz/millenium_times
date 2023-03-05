@@ -17,51 +17,60 @@
                     </span>
                 </div>
                 <div class="gallery-search">
-                    <input type="text" placeholder="Cari di gallery">
+                    <input wire:model='gallery_search' type="text" placeholder="Cari di gallery">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
+            @if ($search_active)
+                <div class="content-neck">
+                    <span>Hasil Pencarian {{ $gallery_search }}</span>
+                </div>                
+            @endif
             <div class="content-body">
                 <div id="gallery-image-list" class="card-wrapper">
-                    @foreach (range(0,9) as $i)
-                        <div
-                            class="card"
-                            onclick="set_view_image({{ $i }})"
-                            data-image-url="{{ asset('image/ikhsan-leonardo-imanuel-rumbay-australia-open-2022-7_169.jpeg') }}"
-                            data-title='{{ $i }} - Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quo blanditiis eos possimus voluptatibus eaque earum nemo!'
-                            data-title-slug='slug'
-                            data-date='22 November 2022'
-                            data-post-id='3'
-                            >
-                            <img src="{{ asset('image/ikhsan-leonardo-imanuel-rumbay-australia-open-2022-7_169.jpeg') }}" alt="FILL THIS">
-                            <div class="title-box">
-                                <span href="#">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
-                            </div>
-                        </div>
-                        {{-- <div
-                            class="card"
-                            onclick="full_screen_view(this)"
-                            data-image-url="{{ asset('image/andrew-reshetov-Jy4rq29KZNU-unsplash.jpg') }}"
-                            data-title='Quisquam quo blanditiis eos possimus voluptatibus eaque earum nemo!'
-                            data-title-slug='slug'
-                            data-date='22 November 2022'
-                            data-post-id='4'
-                            >
-                            <img src="{{ asset('image/andrew-reshetov-Jy4rq29KZNU-unsplash.jpg') }}" alt="FILL THIS">
-                            <div class="title-box">
-                                <span href="#">Quisquam quo blanditiis eos possimus voluptatibus eaque earum nemo!</span>
-                            </div>
-                        </div> --}}
-                    @endforeach
 
-                    {{-- <div class="no-item">
-                        <i class="fa-solid fa-circle-question"></i>
-                        <span>Hasil pencarian tidak ditemukan!</span>
-                    </div> --}}
+                    @php
+                        $num_id = 0;
+                    @endphp
+
+                    @forelse ($galleries as $gallery)
+
+                        @if ($gallery->preview_image != null)
+                            <div
+                                class="card"
+                                onclick="set_view_image({{ $num_id }})"
+                                data-image-url="{{ asset('storage/'.$gallery->preview_image) }}"
+                                data-title='{{ $gallery->title }}'
+                                data-title-slug='{{ $gallery->title_slug }}'
+                                data-date='{{ $this->translate_date($gallery->created_at) }}'
+                                data-post-id='{{ $gallery->id }}'
+                                >
+                                <img src="{{ asset('storage/'.$gallery->preview_image) }}" alt="{{ $gallery->title_slug }}">
+                                <div class="title-box">
+                                    <span href="post/{{ $gallery->id }}-{{ $gallery->title_slug }}">{{ $gallery->title }}</span>
+                                </div>
+                            </div>
+                        @endif
+
+                        @php
+                            $num_id++;
+                        @endphp
+
+                    @empty
+                        <div class="no-item">
+                            <i class="fa-solid fa-circle-question"></i>
+                            <span>Tidak ada gallery untuk ditampilkan!</span>
+                        </div>
+                    @endforelse
+
                 </div>
-                <div class="card-pagination">
-                    --pagination--
+
+                <div class="button-wrapper">
+                    @if ($more_post == false)
+                        <button wire:click="load_more_post" class="post-more-button">Muat Lainnya</button>
+                    @endif
                 </div>
+
             </div>
         </div>
     </div>
@@ -158,7 +167,7 @@
         $('#view_image').attr("alt", $elem.dataset.titleSlug);
         
         $('#view_title').text($elem.dataset.title);
-        $('#view_title').attr("href", $elem.dataset.postId);
+        $('#view_title').attr("href", 'post/'+$elem.dataset.postId+'-'+$elem.dataset.titleSlug);
         
         $('#view_date').text($elem.dataset.date);
     }

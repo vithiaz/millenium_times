@@ -9,7 +9,6 @@
   z-index: 88;
   overflow: hidden;
   min-width: 280px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -42,7 +41,6 @@
   padding-top: 20px;
   flex-grow: 1;
   flex-basis: 350px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
@@ -81,7 +79,6 @@
 }
 .register-page .main-section .container .section-text .page-wrapper li {
   position: relative;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   transition: all 0.3s ease-in-out;
@@ -97,22 +94,18 @@
   flex-wrap: nowrap;
   gap: 5px;
   align-items: center;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
 .register-page .main-section .container .section-text .page-wrapper li a .image-container {
   width: 40px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
 .register-page .main-section .container .section-text .page-wrapper li a .image-container img {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   -o-object-fit: cover;
@@ -129,7 +122,6 @@
   font-weight: 600;
 }
 .register-page .main-section .container .section-text .page-wrapper li a .label span {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   display: inline-block;
@@ -150,7 +142,6 @@
 .register-page .main-section .container .register-card {
   background-color: white;
   width: 450px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 20px;
@@ -204,7 +195,6 @@
   align-items: center;
 }
 .register-page .main-section .container .register-card .button-container button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;

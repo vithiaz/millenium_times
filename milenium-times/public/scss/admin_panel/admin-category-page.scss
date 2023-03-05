@@ -1,4 +1,6 @@
-@use '../_var' as *;
+// @use '../_var' as *;
+@import '../_var.scss';
+
 
 .admin-category-page {
     
@@ -179,51 +181,6 @@
                     @include pagination-style();
                 }
             }
-        }
-    }
-}
-
-.confirmation-modal {
-    .modal-body {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-
-        .confirmation-input {
-            font-weight: 600;
-            text-transform: capitalize;
-        }
-
-        .confirmation-page[data-page-id='1'] {
-            font-weight: 600;
-            color: $PrimaryRed;
-        }
-        .confirmation-page[data-page-id='2'] {
-            font-weight: 600;
-            color: $PrimaryGreen;
-        }
-        .confirmation-page[data-page-id='3'] {
-            font-weight: 600;
-            color: $PrimaryYellow;
-        }
-    }
-    .abort-button {
-        background-color: $BorderLight !important;
-        color: black !important;
-
-        &:hover {
-            cursor: pointer;
-            background-color: $PrimaryBlack !important;
-            color: white !important;
-        }
-    }
-    .confirm-button {
-        background-color: $PrimaryRed !important;
-        
-        &:hover {
-            cursor: pointer;
-            background-color: $PrimaryBlack !important;
-            color: white !important;
         }
     }
 }

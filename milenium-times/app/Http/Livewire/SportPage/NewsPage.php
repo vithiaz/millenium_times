@@ -17,22 +17,34 @@ class NewsPage extends Component
     public $PAGE_ID = 1;
     protected $post_Query;
 
-
     // Binding variable
     public $hero_post;
     public $top_categories;
 
     public function mount() {
         $this->post_Query = Post::where('page_id', '=', $this->PAGE_ID)->with(['category'])->orderBy('created_at', 'desc');
-        $this->hero_post = $this->post_Query->first();
+
+        if ($this->post_Query != null) {
+            $this->hero_post = $this->post_Query->first();
+        }
+        else {
+            $this->hero_post = [];
+        }
+            
         $this->top_categories = PostCategory::with('posts')->where('page_id', '=', $this->PAGE_ID)->take(7)->get()->sortByDesc('posts');
     }
 
     public function render()
     {
+        if ($this->hero_post != null) {
+            $post_id_exceptions = $this->hero_post->id;
+        } else {
+            $post_id_exceptions = null;
+        }
+
         $posts = Post::where([
             ['page_id', '=', $this->PAGE_ID],
-            ['id', '!=', $this->hero_post->id],
+            ['id', '!=', $post_id_exceptions],
         ])->with(['category'])->orderBy('created_at', 'desc')->paginate(10);
 
         return view('livewire.sport-page.news-page', ['posts' => $posts])->layout('layouts.sport');

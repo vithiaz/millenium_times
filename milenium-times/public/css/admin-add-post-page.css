@@ -7,7 +7,6 @@
 }
 .add-news-page .container .content-card {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 20px 0;
@@ -104,7 +103,6 @@
 }
 .add-news-page .container .content-card .main-input .input-profile-image .image-main-container {
   width: 320px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   min-height: 250px;
@@ -121,7 +119,6 @@
   font-size: 0.9em;
 }
 .add-news-page .container .content-card .main-input .input-profile-image .image-main-container .add-image-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -145,14 +142,12 @@
 }
 .add-news-page .container .content-card .main-input .input-profile-image .image-main-container .image-container {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
 }
 .add-news-page .container .content-card .main-input .input-profile-image .image-main-container .image-container img {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   -o-object-fit: cover;
@@ -172,7 +167,6 @@
   justify-content: center;
 }
 .add-news-page .container .content-card .main-input .input-profile-image .image-main-container .image-container .option-wrapper .remove-image-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -225,7 +219,6 @@
   display: none;
 }
 .add-news-page .container .content-card .main-input .input-profile-image .image-main-container .no-image-container .input-image-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -307,7 +300,6 @@
 }
 .add-news-page .container .content-card .main-input .input-body-news .note-editing-area {
   padding: 5px 20px 20px 30px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -317,7 +309,6 @@
 }
 .add-news-page .container .content-card .main-input .button-wrapper {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
@@ -327,7 +318,6 @@
   justify-content: flex-end;
 }
 .add-news-page .container .content-card .main-input .button-wrapper .post-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -348,7 +338,6 @@
   color: white;
 }
 .add-news-page .container .content-card .main-input .button-wrapper .delete-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -369,7 +358,6 @@
   color: white;
 }
 .add-news-page .container .content-card .main-input .button-wrapper .save-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -390,7 +378,6 @@
   color: white;
 }
 .add-news-page .container .content-card .main-input .button-wrapper .abort-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;

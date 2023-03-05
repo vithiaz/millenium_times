@@ -1,4 +1,5 @@
-@use '../_var' as *;
+// @use '../_var' as *;
+@import '../_var';
 
 $primary_color: $PrimaryRed;
 
@@ -93,7 +94,9 @@ $primary_color: $PrimaryRed;
                 }
 
                 .card-pagination {
-                    padding: 10px 0;
+                    padding: 20px 0;
+
+                    @include pagination-style($bg_color: $PrimaryRed, $links_color: $PrimaryRed);
                 }
             }
 

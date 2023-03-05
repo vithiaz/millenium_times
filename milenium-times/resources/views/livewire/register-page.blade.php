@@ -45,47 +45,47 @@
                     </li>
                 </ul>
             </div>
-            <form wire:submit.prevent="register" class="register-card">
-                @csrf
-                <span class="card-title">Daftar</span>
-                <div class="form-floating">
-                    <input wire:model='email' class="form-control @error('email') is-invalid @enderror" type="email" id="register_email" placeholder="email">
-                    <label for="register_email">Email*</label>
-                    @error('email')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
+        <form wire:submit.prevent="register" class="register-card">
+            @csrf
+            <span class="card-title">Daftar</span>
+            <div class="form-floating">
+                <input wire:model='email' class="form-control @error('email') is-invalid @enderror" type="email" id="register_email" placeholder="email">
+                <label for="register_email">Email*</label>
+                @error('email')
+                    <small class="error">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-floating">
+                <input wire:model='first_name' type="text" class="form-control @error('first_name') is-invalid @enderror" id="register_first_name" placeholder="nama depan" pattern="^[a-zA-Z ]*$">
+                <label for="register_first_name">Nama depan*</label>
+                @error('first_name')
+                    <small class="error">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-floating">
+                <input wire:model='last_name' type="text" class="form-control @error('last_name') is-invalid @enderror" id="register_last_name" placeholder="nama belakang" pattern="^[a-zA-Z ]*$">
+                <label for="register_last_name">Nama belakang</label>
+                @error('last_name')
+                    <small class="error">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="check-box">
+                <div class="form-check">
+                    <input wire:model='gender' value="male" class="form-check-input" type="radio" name="register_gender" id="register_gender_male" checked>
+                    <label class="form-check-label" for="register_gender_male">
+                        Laki - laki
+                    </label>
                 </div>
-                <div class="form-floating">
-                    <input wire:model='first_name' type="text" class="form-control @error('first_name') is-invalid @enderror" id="register_first_name" placeholder="nama depan" pattern="^[a-zA-Z ]*$">
-                    <label for="register_first_name">Nama depan*</label>
-                    @error('first_name')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
+                <div class="form-check">
+                    <input wire:model='gender' value="female" class="form-check-input" type="radio" name="register_gender" id="register_gender_female">
+                    <label class="form-check-label" for="register_gender_female">
+                    Perempuan
+                    </label>
                 </div>
-                <div class="form-floating">
-                    <input wire:model='last_name' type="text" class="form-control @error('last_name') is-invalid @enderror" id="register_last_name" placeholder="nama belakang" pattern="^[a-zA-Z ]*$">
-                    <label for="register_last_name">Nama belakang</label>
-                    @error('last_name')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="check-box">
-                    <div class="form-check">
-                        <input wire:model='gender' value="male" class="form-check-input" type="radio" name="register_gender" id="register_gender_male" checked>
-                        <label class="form-check-label" for="register_gender_male">
-                            Laki - laki
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input wire:model='gender' value="female" class="form-check-input" type="radio" name="register_gender" id="register_gender_female">
-                        <label class="form-check-label" for="register_gender_female">
-                        Perempuan
-                        </label>
-                    </div>
-                    @error('gender')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
+                @error('gender')
+                    <small class="error">{{ $message }}</small>
+                @enderror
+            </div>
                 <div wire:model='password' class="form-floating">
                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="register_password" placeholder="password">
                     <label for="register_password">Password*</label>

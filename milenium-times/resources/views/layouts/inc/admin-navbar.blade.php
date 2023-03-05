@@ -5,9 +5,9 @@
             <span class="username">{{ Auth::user()->first_name }}</span>
         </div>
         <ul class="nav-menu">
-            <li class="sport"><a href="http://sport.mileniumtimes.devz:8000">Sport</a></li>
-            <li class="env"><a href="#">Environment</a></li>
-            <li class="history"><a href="#">History</a></li>
+            <li class="sport"><a href="{{ route('sport-home') }}">Sport</a></li>
+            <li class="env"><a href="{{ route('env-home') }}">Environment</a></li>
+            <li class="history"><a href="{{ route('history-home') }}">History</a></li>
         </ul>
         <div class="logout">
             {{-- Logout Confirmation Modal in admin-sidebar.blade --}}

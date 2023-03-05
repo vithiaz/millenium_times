@@ -47,10 +47,15 @@ class Category extends Component
     
     public function render()
     {
-        $render_categories = $this->query_category->where('id', '!=', $this->selected_category->id)->take($this->load_category_amount);
         $categories_next_count = $this->query_category->skip($this->load_category_amount)->count();
-
-        $posts = $this->selected_category->posts()->paginate(8);
+        
+        if ($this->selected_category != null) {
+            $render_categories = $this->query_category->where('id', '!=', $this->selected_category->id)->take($this->load_category_amount);
+            $posts = $this->selected_category->posts()->paginate(8);
+        } else {
+            $render_categories = [];
+            $posts = [];
+        }
         
         return view('livewire.sport-page.category', [
             'categories' => $render_categories,

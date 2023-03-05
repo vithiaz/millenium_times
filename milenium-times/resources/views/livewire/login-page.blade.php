@@ -37,8 +37,7 @@
                     <span>Masuk dengan</span>
                 </div>
                 <div class="social-ic-wrapper">
-                    <a href="#"><x-icon.fb/></a>
-                    <a href="#"><x-icon.google/></a>
+                    <a href="{{ route('google-redirect') }}"><x-icon.google/></a>
                 </div>
                 <div class="register-suggest">
                     <span>Belum punya akun?</span>

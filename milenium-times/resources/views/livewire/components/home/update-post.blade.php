@@ -6,7 +6,13 @@
         @forelse ($posts as $post)
         <div class="card-type-two">
                 <div class="card-image-container">
-                    <img onclick="location.href='post/{{ $post->id }}-{{ $post->title_slug }}'" src='{{ asset("storage/$post->preview_image") }}' alt="REPLACE_THIS">
+
+                    @if ($post->preview_image != null)
+                        <img onclick="location.href='post/{{ $post->id }}-{{ $post->title_slug }}'" src='{{ asset("storage/$post->preview_image") }}' alt="REPLACE_THIS">
+                    @else
+                        <img onclick="location.href='post/{{ $post->id }}-{{ $post->title_slug }}'" src="{{ asset('image/no-image.png') }}" alt="REPLACE_THIS">
+                    @endif
+
                 </div>
                 <div class="card-content">
                     @if ($post->category)

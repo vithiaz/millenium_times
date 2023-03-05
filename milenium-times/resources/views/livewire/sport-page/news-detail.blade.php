@@ -19,7 +19,7 @@
         </div>
         <div class="content-section">
             <div class="left-side">
-                <span class="content-title">{{ $post->title }}</span>
+                <h1 class="content-title">{{ $post->title }}</h1>
                 <div class="content-sub-title">
                     <span class="date">{{ $this->translate_date($post->created_at) }}</span>
                     <div class="info">
@@ -30,9 +30,9 @@
                 <div class="content-share">
                     <span>Bagikan :</span>
                     <div class="icon-wrapper">
-                        <a href="#"><x-icon.fb/></a>
-                        <a href="#"><x-icon.ig/></a>
-                        <a href="#" class="ic"><i class="fa-solid fa-link"></i></a>
+                        <a href="{{ $this->fb_link }}" target="_blank"><x-icon.fb/></a>
+                        <a href="{{ $this->wa_link }}" target="_blank"><x-icon.wa/></a>
+                        <span onclick="copyLinkToClipboard('{{ $this->current_url }}')" class="ic"><i class="fa-solid fa-link"></i></span>
                     </div>
                 </div>
                 <div class="content-body">
@@ -44,7 +44,6 @@
                     <div class="post-body">
                         {!! $post->body !!}
                     </div>
-
                 </div>
                 <div class="post-suggestion">
                     <div class="title">
@@ -53,7 +52,7 @@
                     <div class="card-wrapper">
                         @foreach ($recomendation_posts as $post)
                             <x-card.type-two
-                                image='{{ asset("storage/$post->preview_image") }}'
+                                image='{{ $post->preview_image }}'
                                 category='{{ $post->category ? $post->category->name : "" }}'
                                 date='{{ $this->translate_date($post->created_at) }}'
                                 title='{{ $post->title }}'
@@ -91,6 +90,26 @@
 @push('scripts')
     <script>
 
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);            
+            const year = date.getFullYear();
+            const month = ('0' + (date.getMonth() + 1)).slice(-2);
+            const day = ('0' + date.getDate()).slice(-2);
+            
+            return `${year}/${month}/${day}`;
+        }
+
+
+        $(document).ready(function () {
+            if (@this.post_location) {
+                $('.post-body').find('p:first').prepend('<strong>' + @this.post_location + ' - </strong>');
+            }
+            if (@this.post_date) {
+                $('.post-body').find('p:first').prepend('<strong>(' + formatDate(@this.post_date) + ') </strong>');
+            }
+        })
+
         // Set news-page Padding Based on Navbar Height
         function adapt_page_to_navbar_height($height) {
             $('.news-detail-page').css('padding-top', ($height + 10) + 'px');
@@ -104,6 +123,21 @@
         $(window).scroll(function () {
             adapt_page_to_navbar_height($('.navbar').height());
         });
+
+
+        // Copy Link to Clipboard
+        function copyLinkToClipboard(link) {
+            const tempInput = document.createElement('input');
+            tempInput.value = link;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Show Message
+            show_message("Tersimpan di clipboard", 'info');
+        }
+
 
     </script>
 @endpush

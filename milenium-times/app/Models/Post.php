@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Pages;
 use App\Models\PostCategory;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +40,10 @@ class Post extends Model implements CanVisit
     public function page()
     {
         return $this->hasOne(Pages::class, 'id', 'page_id');
+    }
+
+    public function user() {
+        return $this->hasOne(User::class, 'id', 'post_by');
     }
 
 }

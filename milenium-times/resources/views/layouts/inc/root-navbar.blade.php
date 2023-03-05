@@ -1,14 +1,14 @@
 <nav class="navbar root-navbar">
     <div class="container">
-        <div class="logo-container">
+        <div onClick="location.href='{{ route('welcome-page') }}'"  class="logo-container">
             <img src="{{ asset('image\milenium-logo-origin.png') }}" alt="">
             <span class="brand">Milenium Times</span>
         </div>
         <div class="menu-wrapper">
             <ul>
                 <li class="sport"><a href="{{ route('sport-home') }}">Sport</a></li>
-                <li class="env"><a href="#">Environment</a></li>
-                <li class="history"><a href="#">History</a></li>
+                <li class="env"><a href="{{ route('env-home') }}">Environment</a></li>
+                <li class="history"><a href="{{ route('history-home') }}">History</a></li>
             </ul>
         </div>
         <div class="auth-container">
@@ -18,16 +18,20 @@
                     <i id="auth-dropdown-button" class="fa-solid fa-angle-down"></i>
                     <div class="dropdown">
                         <ul>
-                            <li>
-                                <i class="fa-solid fa-door-open"></i>
-                                <a href="{{ route('global-logout') }}">Keluar</a>
-                            </li>
                         @if (Auth::user()->user_type == '1')
                             <li>
                                 <i class="fa-solid fa-toolbox"></i>
                                 <a href="{{ route('admin-news-list') }}">Admin Panel</a>
                             </li>
                         @endif
+                            <li>
+                                <i class="fa-regular fa-address-card"></i>
+                                <a href="{{ route('user-settings') }}">Pengaturan Akun</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-door-open"></i>
+                                <a href="{{ route('global-logout') }}">Keluar</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

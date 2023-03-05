@@ -19,6 +19,9 @@
         <div class="description-container">
             <span class="title">Tentang Kami</span>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt deserunt eos dolorem blanditiis modi, ducimus nihil tenetur at repudiandae consequuntur fugit suscipit quod exercitationem distinctio quibusdam quia voluptatem assumenda sequi accusantium aperiam aspernatur perferendis soluta? Assumenda recusandae quisquam placeat ipsa.</p>
+            <div class="domain-container">
+                <a href="{{ route('welcome-page') }}" class="base-domain-title">Milenium <span class="base">Times</span></a>
+            </div>
         </div>
         <div class="contact-container">
             <div class="follow-us">

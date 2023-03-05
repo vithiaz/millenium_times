@@ -62,7 +62,6 @@
   justify-content: center;
   gap: 20px;
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 0.9rem;
@@ -82,5 +81,18 @@
   font-size: 2rem;
 }
 .search-page .container .content-section .content-body .card-pagination {
-  padding: 10px 0;
+  padding: 20px 0;
+}
+.search-page .container .content-section .content-body .card-pagination .pagination .page-item .page-link {
+  color: #DD3333;
+}
+.search-page .container .content-section .content-body .card-pagination .pagination .page-item:first-child .page-link,
+.search-page .container .content-section .content-body .card-pagination .pagination .page-item:last-child .page-link {
+  border-radius: 0;
+  color: #747474;
+}
+.search-page .container .content-section .content-body .card-pagination .pagination .page-item.active .page-link {
+  background-color: #DD3333;
+  color: white;
+  border-color: transparent;
 }/*# sourceMappingURL=sport-searchpage.css.map */

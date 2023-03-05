@@ -36,7 +36,7 @@
                                 <td>{{ $post->created_at->toDateString() }}</td>
                                 <td>{!! $post->title !!}</td>
                                 <td>{{ $post->category != null? $post->category->name : '' }}</td>
-                                <td>Admin</td>  
+                                <td>{{ $post->user->first_name }}</td>  
                                 <td>
                                     <a href="/post/edit/{{ $post->id }}-{{ $post->title_slug }}" class="edit-post-button">Edit</a>
                                 </td>    

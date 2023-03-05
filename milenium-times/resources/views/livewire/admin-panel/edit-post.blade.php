@@ -61,7 +61,7 @@
                             @error('image')
                                 <br><small class="error" style="width: fit-content; padding-left: 0;">{{ $message }}</small>
                             @else
-                                <span class="no-image-text">belum ada gambar dipilih</span>
+                                <span class="no-image-text">belum ada headline diupload</span>
                             @enderror
                             <input type="file" wire:model='image' id="input-image" accept="image/*">
                             <button class="input-image-button" onclick="$('#input-image').click()">Pilih Gambar</button>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="desc">
-                        <span>* tambahkan foto/gambar untuk ditampilkan pada halaman website.</span>
+                        <span>* tambahkan foto/gambar untuk ditampilkan sebagai headline.</span>
                     </div>
                 </div>
                 <div class="input-info">

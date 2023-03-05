@@ -3,7 +3,13 @@
 @endpush
 
 <div class="homepage">
-    <div class="header-section" style="background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,0,0,0)), url({{ asset('image/emerson-vieira-V6kZMhjWveo-unsplash.jpg')}}) no-repeat center center / cover;">
+
+    @if ($page_wallpaper)
+        <div class="header-section" style="background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,0,0,0)), url({{ asset('storage/'.$page_wallpaper)}}) no-repeat center center / cover;">
+    @else
+        <div class="header-section" style="background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,0,0,0)), no-repeat center center / cover;">
+    @endif
+
         <div class="container">
             <div class="header-logo-container">
                 <div class="image-container">
@@ -12,15 +18,21 @@
                 <span class="brand">Milenium <span>Sport</span></span>
             </div>
             <div id="home-content-nav" class="header-nav">
-                <span class="active sport-nav"><a  href="#">Sport</a></span>
-                <span class="env-nav"><a  href="#">Environment</a></span>
-                <span class="history-nav"><a  href="#">History</a></span>
+                <span class="active sport-nav"><a  href="{{ route('sport-home') }}">Sport</a></span>
+                <span class="env-nav"><a  href="{{ route('env-home') }}">Environment</a></span>
+                <span class="history-nav"><a  href="{{ route('history-home') }}">History</a></span>
             </div>
             <div class="header-content">
                 <div class="main-content">
                     <div class="main-image-container">
                         @if ($newest_post_hero)
-                            <img src="{{ asset('storage/'.$newest_post_hero->preview_image) }}" alt="REPLACE_THIS">                            
+
+                            @if ($newest_post_hero->preview_image != null)
+                                <img src="{{ asset('storage/'.$newest_post_hero->preview_image) }}" alt="{{ $newest_post_hero->title_slug.'_headline' }}">                                                        
+                            @else
+                                <img src="{{ asset('image/no-image.png') }}" alt="{{ 'no-image' }}">
+                            @endif
+
                         @else
                             <div class="no-image">
                                 <i class="fa-solid fa-0"></i>

@@ -39,6 +39,10 @@
                                 </li>
                             @endif
                             <li>
+                                <i class="fa-regular fa-address-card"></i>
+                                <a href="{{ route('user-settings') }}">Pengaturan Akun</a>
+                            </li>
+                            <li>
                                 <i class="fa-solid fa-door-open"></i>
                                 <a href="{{ route('global-logout') }}">Keluar</a>
                             </li>
@@ -50,16 +54,15 @@
                 <span class="register" onclick="location.href='{{ route('base-register') }}'">Daftar</span>
                 <span class="login" data-bs-toggle="modal" data-bs-target="#auth_modal">Masuk</span>
                 <span class="login-hidden" data-bs-toggle="modal" data-bs-target="#auth_modal"><i class="fa-solid fa-right-to-bracket"></i></span>
-                
             @endauth
         </div>
         
     </div>
     <div class="nav-logo-dropdown">
         <ul>
-            <li><a href="#">Milenium <span class="sport">Sport</span></a></li>
-            <li><a href="#">Milenium <span class="env">Environment</span></a></li>
-            <li><a href="#">Milenium <span class="history">History</span></a></li>
+            <li><a href="{{ route('sport-home') }}">Milenium <span class="sport">Sport</span></a></li>
+            <li><a href="{{ route('env-home') }}">Milenium <span class="env">Environment</span></a></li>
+            <li><a href="{{ route('history-home') }}">Milenium <span class="history">History</span></a></li>
         </ul>
     </div>
 

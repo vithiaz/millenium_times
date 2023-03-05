@@ -15,17 +15,25 @@
             </div>
             <div class="content-head">
                 <div class="hero-post">
-                    <div class="image-container">
-                        <img onclick="location.href = 'post/{{ $hero_post->id }}-{{ $hero_post->title_slug }}'" src='{{ asset("storage/$hero_post->preview_image") }}' alt="{{ $hero_post->title_slug }}">
-                    </div>
-                    <div class="details">
-                        @if ($hero_post->category)
-                            <div class="category">{{ $hero_post->category->name }}</div>
-                        @endif
-                        <div class="title"><a href="post/{{ $hero_post->id }}-{{ $hero_post->title_slug }}">{{ $hero_post->title }}</a></div>
-                        <div class="date">{{ $this->translate_date($hero_post->date) }}</div>
-                        <div class="details-text">{{ $this->get_first_paragraph($hero_post->body) }}</div>
-                    </div>
+                    @if ($hero_post != null)
+                        <div class="image-container">
+
+                            @if ($hero_post->preview_image)
+                                <img onclick="location.href = 'post/{{ $hero_post->id }}-{{ $hero_post->title_slug }}'" src='{{ asset("storage/$hero_post->preview_image") }}' alt="{{ $hero_post->title_slug }}">
+                            @else
+                                <img onclick="location.href = 'post/{{ $hero_post->id }}-{{ $hero_post->title_slug }}'" src="{{ asset('image/no-image.png') }}" alt="no-image">
+                            @endif
+
+                        </div>
+                        <div class="details">
+                            @if ($hero_post->category)
+                                <div class="category">{{ $hero_post->category->name }}</div>
+                            @endif
+                            <div class="title"><a href="post/{{ $hero_post->id }}-{{ $hero_post->title_slug }}">{{ $hero_post->title }}</a></div>
+                            <div class="date">{{ $this->translate_date($hero_post->date) }}</div>
+                            <div class="details-text">{{ $this->get_first_paragraph($hero_post->body) }}</div>
+                        </div>
+                    @endif
                 </div>
                 <div class="categories">
                     <div class="title">Kategori Populer</div>
@@ -40,21 +48,20 @@
 
             <div class="content-body">
                 <div class="card-wrapper">
-                    @foreach ($posts as $post)
+                    @forelse ($posts as $post)
                         <x-card.type-two
-                            image='{{ asset("storage/$post->preview_image") }}'
+                            image='{{ $post->preview_image }}'
                             category='{{ $post->category ? $post->category->name : "" }}'
                             date='{{ $this->translate_date($post->created_at) }}'
                             title='{{ $post->title }}'
                             postId='{{ $post->id }}'
                         />
-                    @endforeach
-
-                    {{-- <div class="no-item">
+                    @empty
+                    <div class="no-item">
                         <i class="fa-solid fa-circle-info"></i>
-                        <span>Belum ada postingan pada kategori ini!</span>
-                    </div> --}}
-                    
+                        <span>Belum ada postingan!</span>
+                    </div>
+                    @endforelse                    
                 </div>
 
                 <div class="card-pagination">

@@ -24,7 +24,6 @@
   align-items: center;
   justify-content: flex-start;
   height: 100%;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   -moz-column-gap: 20px;
@@ -41,7 +40,6 @@
 }
 .root-navbar .container .logo-container img {
   height: 40px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   -o-object-fit: cover;
@@ -111,7 +109,6 @@
   font-weight: 1rem;
   position: relative;
   max-width: 250px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding-top: 5px;
@@ -158,8 +155,11 @@
 }
 .root-navbar .container .auth-container .logged-in .username {
   font-weight: 600;
-  max-width: 100%;
-  overflow-x: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 .root-navbar .container .auth-container .logged-in #auth-dropdown-button {
   padding: 10px;
@@ -179,7 +179,6 @@
   right: 0;
   width: 220px;
   height: 100px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   background-color: white;
@@ -218,6 +217,34 @@
 }
 .root-navbar .container .auth-container .logged-in .dropdown ul li:hover {
   background-color: #E8E8E8;
+}
+.root-navbar.dark {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+.root-navbar.dark.scroll-up {
+  background-color: #1C1C1C !important;
+}
+.root-navbar.dark .brand {
+  color: white !important;
+}
+.root-navbar.dark .menu-wrapper li a {
+  color: white !important;
+}
+.root-navbar.dark .auth-container::before {
+  background-color: rgb(80, 80, 80);
+}
+.root-navbar.dark .login a {
+  background-color: transparent !important;
+  color: white;
+}
+.root-navbar.dark .logged-in .username {
+  color: white;
+}
+.root-navbar.dark .logged-in #auth-dropdown-button {
+  color: white;
+}
+.root-navbar.dark .logged-in #auth-dropdown-button:hover, .root-navbar.dark .logged-in #auth-dropdown-button.active {
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 @media screen and (max-width: 991px) {

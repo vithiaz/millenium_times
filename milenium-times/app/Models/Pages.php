@@ -15,5 +15,6 @@ class Pages extends Model
         'name',
         'name_slug',
         'logo_img',
+        'wallpaper_img',
     ];
 }

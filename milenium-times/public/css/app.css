@@ -8,9 +8,14 @@ body {
   min-width: 280px;
 }
 
+.root-page-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .navbar {
   background-color: #1C1C1C;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   min-height: 60px;
@@ -23,6 +28,9 @@ body {
   left: 0;
   z-index: 99;
   transition: all 0.3s ease-in-out;
+}
+.navbar.root-navbar .container .logo-container:hover {
+  cursor: pointer;
 }
 .navbar span:hover {
   cursor: pointer;
@@ -50,7 +58,7 @@ body {
   transition: all 0.3s ease-in-out;
 }
 .navbar .container .logo img {
-  height: 100%;
+  height: 40px;
 }
 .navbar .container .logo .brand {
   display: inline-block;
@@ -190,7 +198,17 @@ body {
   display: none;
 }
 .navbar .container .auth .logged-in {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .container .auth .logged-in .username {
   display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 .navbar .container .auth .logged-in .arrow-head {
   margin-left: 10px;
@@ -209,7 +227,6 @@ body {
   right: 0;
   width: 220px;
   height: 100px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   background-color: white;
@@ -397,7 +414,6 @@ body {
   justify-content: center;
   position: relative;
   max-width: 400px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -409,13 +425,17 @@ body {
   position: absolute;
   top: 20px;
   right: 20px;
+  display: grid;
+  place-items: center;
+  background-color: transparent;
+  border: none;
+}
+#auth_modal .modal-dialog .modal-content .close-modal-button:hover {
+  cursor: pointer;
+  color: #4270EE;
 }
 #auth_modal .modal-dialog .modal-content .close-modal-button i {
   font-size: 1.3rem;
-}
-#auth_modal .modal-dialog .modal-content .close-modal-button i:hover {
-  cursor: pointer;
-  color: #DD3333;
 }
 #auth_modal .modal-dialog .modal-content .logo-wrapper {
   width: 100%;
@@ -427,7 +447,6 @@ body {
 }
 #auth_modal .modal-dialog .modal-content .logo-wrapper img {
   height: 40px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -454,7 +473,6 @@ body {
   background-color: white;
 }
 #auth_modal .modal-dialog .modal-content .login-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -483,7 +501,6 @@ body {
   margin: 5px 0;
 }
 #auth_modal .modal-dialog .modal-content .seperator span {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 5px;
@@ -513,14 +530,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-#auth_modal .modal-dialog .modal-content .social-ic-wrapper a {
+#auth_modal .modal-dialog .modal-content .social-ic-wrapper a, #auth_modal .modal-dialog .modal-content .social-ic-wrapper span {
   text-decoration: none;
   position: relative;
 }
-#auth_modal .modal-dialog .modal-content .social-ic-wrapper a svg {
+#auth_modal .modal-dialog .modal-content .social-ic-wrapper a svg, #auth_modal .modal-dialog .modal-content .social-ic-wrapper span svg {
   transition: 0.1s all ease-in-out;
 }
-#auth_modal .modal-dialog .modal-content .social-ic-wrapper a:hover svg {
+#auth_modal .modal-dialog .modal-content .social-ic-wrapper a:hover svg, #auth_modal .modal-dialog .modal-content .social-ic-wrapper span:hover svg {
+  cursor: pointer;
   transform: scale(1.2);
 }
 #auth_modal .modal-dialog .modal-content .social-ic-wrapper svg {
@@ -541,7 +559,6 @@ body {
 
 .page-path-section {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   margin: 0;
@@ -605,11 +622,9 @@ body {
   width: 40px;
 }
 .footer .container .logo-container {
-  min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
   flex-basis: 200px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   flex-shrink: 1;
@@ -621,7 +636,6 @@ body {
 }
 .footer .container .logo-container img {
   width: 60px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -654,6 +668,29 @@ body {
   text-indent: 50px;
   text-align: justify;
 }
+.footer .container .description-container .domain-container {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  align-items: center;
+}
+.footer .container .description-container .domain-container .base-domain-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: white;
+}
+.footer .container .description-container .domain-container .base-domain-title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer .container .description-container .domain-container .base-domain-title .base {
+  color: #4270EE;
+}
 .footer .container .contact-container {
   flex-basis: 250px;
   display: flex;
@@ -676,14 +713,15 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
-.footer .container .contact-container .follow-us .logo-wrapper a {
+.footer .container .contact-container .follow-us .logo-wrapper a, .footer .container .contact-container .follow-us .logo-wrapper span {
   text-decoration: none;
   position: relative;
 }
-.footer .container .contact-container .follow-us .logo-wrapper a svg {
+.footer .container .contact-container .follow-us .logo-wrapper a svg, .footer .container .contact-container .follow-us .logo-wrapper span svg {
   transition: 0.1s all ease-in-out;
 }
-.footer .container .contact-container .follow-us .logo-wrapper a:hover svg {
+.footer .container .contact-container .follow-us .logo-wrapper a:hover svg, .footer .container .contact-container .follow-us .logo-wrapper span:hover svg {
+  cursor: pointer;
   transform: scale(1.2);
 }
 .footer .container .contact-container .contact {
@@ -767,10 +805,8 @@ body {
 }
 
 .component-card-one {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
@@ -786,14 +822,12 @@ body {
 }
 .component-card-one .card-content .card-image-container {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   overflow: hidden;
 }
 .component-card-one .card-content .card-image-container img {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   transition: 0.3s all ease-in-out;
@@ -839,10 +873,8 @@ body {
   flex-basis: 220px;
   max-width: 320px;
   flex-grow: 1;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
@@ -857,14 +889,12 @@ body {
   transform: scale(1.3);
 }
 .component-card-two .card-content .card-image-container {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   overflow: hidden;
 }
 .component-card-two .card-content .card-image-container img {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   transition: all 0.3s ease-in-out;
@@ -886,10 +916,8 @@ body {
   padding: 5px 10px;
   background-color: #1C1C1C;
   color: white;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   text-decoration: none;
@@ -916,7 +944,6 @@ body {
 }
 
 .components.most-view-container {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   width: 100%;
@@ -958,7 +985,6 @@ body {
 }
 .components.most-view-container .card-view-wrapper .card-view .card-title {
   flex-grow: 1;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding-left: 5px;
@@ -976,7 +1002,6 @@ body {
   text-decoration: underline;
 }
 .components.most-view-container .most-view-button {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding-left: 18px;
@@ -1024,7 +1049,6 @@ body {
 }
 .components.popular-category-container .card-view-wrapper {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
@@ -1081,6 +1105,139 @@ body {
 
 .swiper-pagination-bullet-active {
   background: #DD3333;
+}
+
+#session-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  max-width: 220px;
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  align-items: center;
+  transform: translateX(100vw);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  z-index: 101;
+}
+#session-message.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+#session-message.success .content i.success {
+  display: block;
+}
+#session-message.danger .content i.danger {
+  display: block;
+}
+#session-message.info .content i.info {
+  display: block;
+}
+#session-message .close-button {
+  display: grid;
+  place-items: center;
+  padding: 10px;
+}
+#session-message .close-button:hover {
+  cursor: pointer;
+  background-color: #E8E8E8;
+}
+#session-message .content {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+#session-message .content i {
+  font-size: 1.5rem;
+  display: none;
+}
+#session-message .content i.success {
+  color: #58EF3A;
+}
+#session-message .content i.danger {
+  color: #DD3333;
+}
+#session-message .content i.info {
+  color: #4270EE;
+}
+#session-message .content .message {
+  flex-grow: 1;
+  font-weight: 600;
+}
+
+.confirmation-modal .modal-dialog .modal-content {
+  border-radius: 4px;
+}
+.confirmation-modal .modal-dialog .modal-content .modal-button {
+  height: 35px;
+  border-radius: 4px;
+}
+.confirmation-modal .modal-dialog .modal-content .modal-button:hover {
+  cursor: pointer;
+}
+.confirmation-modal .modal-dialog .modal-content .confirm-button {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-left: 18px;
+  padding-right: 18px;
+  height: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  background-color: #4270EE;
+  outline: none;
+  border: none;
+  transition: all 0.1s ease-in-out;
+}
+.confirmation-modal .modal-dialog .modal-content .confirm-button:hover {
+  cursor: pointer;
+  background-color: #113eb9;
+}
+.confirmation-modal .modal-dialog .modal-content .alert-button {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-left: 18px;
+  padding-right: 18px;
+  height: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  background-color: #DD3333;
+  outline: none;
+  border: none;
+  transition: all 0.1s ease-in-out;
+}
+.confirmation-modal .modal-dialog .modal-content .alert-button:hover {
+  cursor: pointer;
+  background-color: #921818;
+}
+.confirmation-modal .modal-dialog .modal-content .abort-button {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-left: 18px;
+  padding-right: 18px;
+  height: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  background-color: #C9C9C9;
+  outline: none;
+  border: none;
+  transition: all 0.1s ease-in-out;
+  color: black;
+}
+.confirmation-modal .modal-dialog .modal-content .abort-button:hover {
+  cursor: pointer;
+  background-color: #969696;
 }
 
 @media screen and (max-width: 992px) {

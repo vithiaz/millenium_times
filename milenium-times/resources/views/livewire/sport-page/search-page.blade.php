@@ -28,23 +28,24 @@
             </div>
             <div class="content-body">
                 <div class="card-wrapper">
-                    @foreach ($posts as $post)
+                    @forelse ($posts as $post)
                         <x-card.type-two
                             image="{{ $post->preview_image }}"
                             category="{{ $post->category ? $post->category->name : '' }}"
                             date='{{ $this->translate_date($post->created_at) }}'
                             title='{{ $post->title }}'
                             postId='{{ $post->id }}'
-                        />                        
-                    @endforeach
-                    {{-- <div class="no-item">
-                        <i class="fa-solid fa-circle-question"></i>
-                        <span>Hasil pencarian tidak ditemukan!</span>
-                    </div> --}}
+                        />
+                    @empty
+                        <div class="no-item">
+                            <i class="fa-solid fa-circle-question"></i>
+                            <span>Hasil pencarian tidak ditemukan!</span>
+                        </div>
+                    @endforelse
                 </div>
 
                 <div class="card-pagination">
-                    --pagination--
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>

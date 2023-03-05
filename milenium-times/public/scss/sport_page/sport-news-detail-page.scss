@@ -1,4 +1,5 @@
-@use '../_var' as *;
+// @use '../_var' as *;
+@import '../_var';
 
 $primary_color: $PrimaryRed;
 
@@ -122,6 +123,7 @@ $primary_color: $PrimaryRed;
                             margin: 0 3px;
                             
                             &:hover {
+                                cursor: pointer;
                                 background-color: rgba(black, 0.6);
                                 color: white;
                             }
@@ -243,7 +245,7 @@ $primary_color: $PrimaryRed;
                         height: fit-content;
                         align-items: center;
                         justify-content: center;
-                        column-gap: 5px;
+                        column-gap: 10px;
 
                         .image-container {
                             width: 50px;
@@ -259,6 +261,10 @@ $primary_color: $PrimaryRed;
                                 width: 100%;
                                 height: 100%;
                                 object-fit: cover;
+                            }
+
+                            .no-image {
+                                @include no-image-i();
                             }
                         }
 
@@ -303,11 +309,15 @@ $primary_color: $PrimaryRed;
                             column-gap: 10px;
                             row-gap: 5px;
 
-                            .comment-text {
-                                text-align: justify;
-                                position: relative;
+                            .comment-text-wrapper {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 10px;
                                 padding-bottom: 10px;
-
+                                align-items: flex-start;
+                                justify-content: space-between;
+                                position: relative;
+                                
                                 &::after {
                                     content: '';
                                     position: absolute;
@@ -317,6 +327,40 @@ $primary_color: $PrimaryRed;
                                     height: 1px;
                                     background-color: $CardBorder;
                                 }
+
+                                .comment-text {
+                                    flex-grow: 1;
+                                    height: 100%;
+                                    display: flex;
+                                    flex-direction: row;
+                                    flex-wrap: nowrap;
+                                    align-items: center;
+
+                                    p {
+                                        text-align: justify;
+                                        position: relative;
+                                        margin: 0;
+                                    }
+                                }
+
+                                .action-button-container {
+                                    flex-shrink: 0;
+                                    width: 40px;
+                                    height: 100%;
+                                    display: grid;
+                                    place-items: center;
+
+                                    .action-button {
+                                        padding: 10px;
+                                        border-radius: 4px;
+
+                                        &:hover {
+                                            cursor: pointer;
+                                            background-color: $PrimaryRed;
+                                        }
+                                    }
+                                }
+
                             }
                         }
 

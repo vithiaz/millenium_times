@@ -63,7 +63,6 @@
   row-gap: 10px;
 }
 .news-page .container .content-section .content-head .hero-post .image-container {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   flex-basis: 320px;
@@ -72,7 +71,6 @@
 }
 .news-page .container .content-section .content-head .hero-post .image-container img {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   transition: all 0.3s ease-in-out;
@@ -105,10 +103,8 @@
 }
 .news-page .container .content-section .content-head .hero-post .details .category {
   padding: 5px 10px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   background-color: #1C1C1C;
@@ -150,10 +146,8 @@
 .news-page .container .content-section .content-head .categories .wrapper .card {
   display: block;
   padding: 5px 10px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   background-color: #1C1C1C;
@@ -186,7 +180,6 @@
   justify-content: center;
   gap: 20px;
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 0.9rem;

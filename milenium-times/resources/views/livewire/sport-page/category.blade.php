@@ -11,7 +11,9 @@
             <i class="fa-sharp fa-solid fa-angle-right"></i>
             <span class=""><a href="#">Kategori</a></span>
             <i class="fa-sharp fa-solid fa-angle-right"></i>
-            <span class="active">{{ $selected_category->name }}</span>
+            @if ($selected_category != null)
+                <span class="active">{{ $selected_category->name }}</span>
+            @endif
         </div>
         <div class="content-section">
             <div class="content-head">
@@ -19,12 +21,19 @@
                     <div class="sub-title">
                         Kategori
                     </div>
+
                     <div class="title">
-                        {{ $selected_category->name }}
+                        @if ($selected_category != null)
+                            {{ $selected_category->name }}
+                        @else
+                            Belum ada Kategori
+                        @endif
                     </div>
                 </div>
                 <div class="categories-card-wrapper">
-                    <button type="button" class="card active">{{ $selected_category->name }}</button>                    
+                    @if ($selected_category != null)
+                        <button type="button" class="card active">{{ $selected_category->name }}</button>                    
+                    @endif
                     @foreach ($categories as $category)
                         <button wire:click="select_category({{ $category->id }})" type="button" class="card {{ $category->id == $selected_category->id ? 'active' : '' }}">{{ $category->name }}</button>                    
                     @endforeach
@@ -37,7 +46,7 @@
                 <div class="card-wrapper">
                     @forelse ($posts as $post)
                         <x-card.type-two
-                            image='{{ asset("storage/$post->preview_image") }}'
+                            image='{{ $post->preview_image }}'
                             category='{{ $post->category ? $post->category->name : "" }}'
                             date='{{ $this->translate_date($post->created_at) }}'
                             title='{{ $post->title }}'
@@ -51,9 +60,11 @@
                     @endforelse
                 </div>
 
-                <div class="card-pagination">
-                    {{ $posts->links() }}
-                </div>
+                @if ($posts != null)
+                    <div class="card-pagination">
+                        {{ $posts->links() }}
+                    </div>                    
+                @endif
             </div>
         </div>
     </div>

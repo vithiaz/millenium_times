@@ -1,7 +1,13 @@
 <div class="component-card-two">
     <div class="card-content">
         <div class="card-image-container">
-            <img onclick="location.href = '/post/{{ $postId }}-{{ $title_slug }}'" src="{{ $image }}" alt="{{ $title_slug }}">
+
+            @if ($image != null)
+                <img onclick="location.href = '/post/{{ $postId }}-{{ $title_slug }}'" src='{{ asset("storage/$image") }}' alt="{{ $title_slug }}">            
+            @else
+                <img onclick="location.href = '/post/{{ $postId }}-{{ $title_slug }}'" src="{{ asset('image/no-image.png') }}" alt="no-image">            
+            @endif
+
         </div>
         <div class="content-neck">
             @if ($category)

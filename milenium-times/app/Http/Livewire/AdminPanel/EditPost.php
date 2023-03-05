@@ -121,7 +121,6 @@ class EditPost extends Component
         if ($this->ImgDeleteState && $this->db_image != null) {
             if (file_exists(public_path() . '/storage/'. $this->db_image)) {
                 unlink(public_path() . '/storage/'. $this->db_image);
-                dd('deleted');
             }
         }
         $view_img_path = null;

@@ -24,13 +24,14 @@ class NewsList extends Component
 
     public function mount() {
         $this->pages = Pages::all();
+        // dd($this->pages);
         $this->select_page = $this->pages->first()->id;
         
     }
     
     public function render()
     {
-        $posts = Post::with('category')->where('page_id', '=', $this->select_page)->paginate(8);
+        $posts = Post::with(['category', 'user'])->where('page_id', '=', $this->select_page)->paginate(8);
         return view('livewire.admin-panel.news-list', ['posts' => $posts])->layout('layouts.admin');
     }
 }

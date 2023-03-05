@@ -4,12 +4,14 @@ namespace App\Http\Livewire\SportPage;
 
 use DOMDocument;
 use App\Models\Post;
+use App\Models\Pages;
 use Livewire\Component;
 use Illuminate\Support\Carbon;
 
 class Home extends Component
 {
     public $PAGE_ID = 1;
+    public $page;
     protected $post_Query;
     protected $posts;
 
@@ -20,6 +22,7 @@ class Home extends Component
     public $popular_post;
     
     public function mount() {
+        $this->page = Pages::find($this->PAGE_ID);
         $this->post_Query = Post::where('page_id', '=', $this->PAGE_ID)->with(['category']);
         $this->posts = $this->post_Query->orderBy('created_at', 'DESC')->get();
 
@@ -32,7 +35,6 @@ class Home extends Component
         $newest_post_hero = $this->posts->first();
         $newest_posts = $this->posts->skip(1)->take(3);
         $weeks_popular_posts = $this->post_Query->popularThisWeek()->orderBy('visit_count_total', 'DESC')->take(8)->get();
-        
         
         // Get more Posts for filling Weekly Posts
         $all_time_popular_posts = [];
@@ -52,6 +54,7 @@ class Home extends Component
             'newest_posts' => $newest_posts,
             'weeks_popular_posts' => $weeks_popular_posts,
             'all_time_popular_posts' => $all_time_popular_posts,
+            'page_wallpaper' => $this->page->wallpaper_img,
         ])->layout('layouts.sport');
     }
 

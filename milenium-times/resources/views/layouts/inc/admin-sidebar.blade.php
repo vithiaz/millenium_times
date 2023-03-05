@@ -5,9 +5,9 @@
     </div>
 
     <div class="content">
-        <span class="logo-hero">
+        <a href="{{ route('welcome-page') }}" class="logo-hero">
             Milenium Times
-        </span>
+        </a>
         <span class="page-hero-title">
             Admin Dashboard
         </span>
@@ -48,24 +48,31 @@
                         @if ( \Request::route()->getName() == 'sport-page-config')
                             class="active"
                         @endif
-                        ><a href="#">Sport</a></li>
+                        ><a href="{{ route('sport-page-config') }}">Sport</a></li>
                     <li
                         @if ( \Request::route()->getName() == 'env-page-config')
                             class="active"
                         @endif
-                    ><a href="#">Environment</a></li>
+                    ><a href="{{ route('env-page-config') }}">Environment</a></li>
                     <li
                         @if ( \Request::route()->getName() == 'history-page-config')
                             class="active"
                         @endif
-                    ><a href="#">History</a></li>
+                    ><a href="{{ route('history-page-config') }}">History</a></li>
                 </ul>
             </div>
         </div>
         <div class="seperator"></div>
         <div class="auth">
             <div class="image-container">
-                <img src="{{ asset('image\ikhsan-leonardo-imanuel-rumbay-australia-open-2022-7_169.jpeg') }}" alt="FILL-THIS">
+                @if (Auth::user()->profile_img)
+                    <img src="{{ asset('storage/'.Auth::user()->profile_img) }}" alt="{{ Auth::user()->id . '-profile' }}">
+                @else                    
+                    <div class="no-image">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                @endif
+
             </div>
             <span class="username">{{ Auth::user()->first_name }}</span>
             <button type="button" class="logout-button" data-bs-toggle="modal" data-bs-target="#logoutModal">

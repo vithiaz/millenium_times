@@ -1,4 +1,5 @@
-@use '../_var' as *;
+// @use '../_var' as *;
+@import '../_var';
 
 $primary_color: $PrimaryRed;
 
@@ -133,6 +134,31 @@ $primary_color: $PrimaryRed;
 
                     .no-item {
                         @include wrapper-empty;
+                    }
+                }
+                
+                .button-wrapper {
+                    display: grid;
+                    place-items: center;
+                    
+                    .post-more-button {
+                        @include button-default($bg_color: $primary_color);
+                    }
+                    .post-more-button:hover {
+                        cursor: pointer;
+                        background-color: darken($color: $primary_color, $amount: 20);
+                    }
+                    
+                    .post-redirect-button {
+                        @include button-default($bg_color: $PrimaryBlack);
+                        text-decoration: none;
+                        display: grid;
+                        place-items: center;
+                        
+                        &:hover {
+                            cursor: pointer;
+                            background-color: lighten($color: $PrimaryBlack, $amount: 20);
+                        }
                     }
                 }
 
